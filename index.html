@@ -1,25 +1,203 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>你的名字 - 个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竟思佳 - 个人主页</title>
     <style>
-        body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
-        .header { text-align: center; border-bottom: 2px solid #eee; }
-        .project { margin: 20px 0; padding: 15px; background: #f8f9fa; }
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: var(--primary-color);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .section {
+            margin: 30px 0;
+            break-inside: avoid;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            margin: 25px 0;
+        }
+
+        .project-card, .award-card {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            margin-left: 10px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 2px;
+            height: calc(100% - 10px);
+            background: var(--secondary-color);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .print-only { display: none; }
+
+        @media print {
+            body { font-size: 12pt; }
+            .project-card { box-shadow: none; }
+            .print-only { display: block; }
+            .no-print { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .contact-info { flex-direction: column; align-items: center; }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>你的名字</h1>
-        <p>计算机科学学生 | 开发者</p>
-    </div>
-    
-    <h2>📚 项目展示</h2>
-    <div class="project">
-        <h3>项目一</h3>
-        <p>使用 HTML/CSS 创建的响应式网页</p>
-        <a href="#">查看代码</a>
-    </div>
+    <header class="header">
+        <h1>竞思佳</h1>
+        <div class="contact-info">
+            <div>📱 15136028780</div>
+            <div>📧 jingsijia2021@163.com</div>
+            <div>📍 河南商丘</div>
+        </div>
+        <div class="print-only">
+            出生年月：2003.06 | 政治面貌：中共党员 | 民族：汉族
+        </div>
+    </header>
+
+    <section class="section">
+        <h2>教育背景</h2>
+        <div class="grid-container">
+            <div>
+                <h3>河南大学人工智能学院</h3>
+                <p>人工智能专业 | 2021.09 - 至今</p>
+                <ul>
+                    <li>GPA：3.71/4.00（专业排名1/114）</li>
+                    <li>CET6：523 | CET4：563</li>
+                    <li>核心课程：机器学习(95)、神经网络与深度学习(96)</li>
+                </ul>
+            </div>
+            <div>
+                <h3>主要荣誉</h3>
+                <ul>
+                    <li>国家奖学金（Top 0.2%）</li>
+                    <li>国家励志奖学金（2次）</li>
+                    <li>8项省级以上竞赛奖项</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>科研经历</h2>
+        <div class="project-card">
+            <h3>基于类脑智能的机器人柔顺控制系统研究（省级大创）</h3>
+            <p>2022.07 - 2024.05 | 项目负责人</p>
+            <ul>
+                <li>搭建SNN小脑模型，实现机械臂实时姿态调整</li>
+                <li>使用Gazebo仿真环境验证柔顺性</li>
+                <li>获优秀项目奖</li>
+            </ul>
+        </div>
+
+        <div class="project-card">
+            <h3>基于YOLOv5的车轮检测系统</h3>
+            <p>2023.08 - 2023.12 | 核心成员</p>
+            <ul>
+                <li>设计Deepsort追踪算法</li>
+                <li>开发QT界面实时展示检测结果</li>
+                <li>完成算法优化和界面美化</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>竞赛成果</h2>
+        <div class="grid-container">
+            <div class="award-card">
+                <h3>🏆 中国机器人及人工智能大赛</h3>
+                <p>全国一等奖 | 2023.08</p>
+                <ul>
+                    <li>基于Apollo的路径规划算法开发</li>
+                    <li>百度自动驾驶场景应用</li>
+                </ul>
+            </div>
+            <div class="award-card">
+                <h3>📈 全国大学生数学建模大赛</h3>
+                <p>省级二等奖 | 2023.11</p>
+                <ul>
+                    <li>LSTM补货预测模型</li>
+                    <li>TOPSIS-熵值法评价体系</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>技能与评价</h2>
+        <div class="grid-container">
+            <div>
+                <h3>技术能力</h3>
+                <ul>
+                    <li>机器人操作系统（ROS）</li>
+                    <li>深度学习框架（PyTorch）</li>
+                    <li>仿真环境（Gazebo/Ubuntu）</li>
+                </ul>
+            </div>
+            <div>
+                <h3>自我评价</h3>
+                <ul>
+                    <li>创新意识突出，工程实践能力强</li>
+                    <li>英语文献阅读能力优异</li>
+                    <li>擅长团队协作与项目管理</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
